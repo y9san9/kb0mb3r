@@ -1,5 +1,7 @@
 package com.y9san9.b0mb3r.phone
 
+import com.y9san9.b0mb3r.utils.mask
+
 
 class Phone {
     var code: Int?
@@ -24,6 +26,8 @@ class Phone {
     fun code(code: Int) : Phone {
         return Phone(code, body)
     }
+
+    fun mask(mask: String, maskSymbol: Char = '#') = text?.mask(mask, maskSymbol)
 
     override fun toString(): String {
         return text ?: ""

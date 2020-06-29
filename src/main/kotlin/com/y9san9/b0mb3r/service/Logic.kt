@@ -5,6 +5,7 @@ import com.github.kittinunf.fuel.core.interceptors.LogRequestAsCurlInterceptor
 import com.github.kittinunf.fuel.core.interceptors.LogResponseInterceptor
 import com.y9san9.b0mb3r.controller.DEBUG
 import com.y9san9.b0mb3r.phone.Phone
+import com.y9san9.b0mb3r.utils.getRandomUserAgent
 
 
 val manager = FuelManager().apply {
@@ -19,10 +20,14 @@ val services by lazy {
 }
 
 fun MutableList<Service>.service(
-     url: String = "",
-     method: Method = Method.POST,
-     params: MutableMap<String, Any> = mutableMapOf(),
-     data: Any? = null,
-     fn: Request.(Phone) -> Unit = {}){
-     add(Service(url, method, params, data, fn))
+        url: String = "",
+        method: Method = Method.POST,
+        headers: MutableMap<String, String> = mutableMapOf(
+             "User-Agent" to getRandomUserAgent(),
+             "X-Requested-With" to "XMLHttpRequest"
+        ),
+        params: MutableMap<String, Any?> = mutableMapOf(),
+        body: Any? = null,
+        fn: Request.(Phone) -> Unit = {}){
+     add(Service(url, method, headers, params, body, fn))
 }
