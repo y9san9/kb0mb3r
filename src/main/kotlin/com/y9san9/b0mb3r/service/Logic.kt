@@ -14,13 +14,15 @@ val manager = FuelManager().apply {
           addResponseInterceptor(LogResponseInterceptor)
      }
 }
-val services = mutableListOf<Service>()
+val services by lazy {
+     ServiceFactory.build()
+}
 
-fun service(
+fun MutableList<Service>.service(
      url: String = "",
      method: Method = Method.POST,
      params: MutableMap<String, Any> = mutableMapOf(),
      data: Any? = null,
      fn: Request.(Phone) -> Unit = {}){
-     services.add(Service(url, method, params, data, fn))
+     add(Service(url, method, params, data, fn))
 }

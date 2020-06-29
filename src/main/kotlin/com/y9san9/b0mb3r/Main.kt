@@ -6,8 +6,6 @@ import java.util.*
 
 val scanner = Scanner(System.`in`)
 fun main(){
-    ServiceFactory.build()
-
     print("Phone number: ")
     Bomber(scanner.next()) {
         subscribe {

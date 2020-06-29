@@ -1,7 +1,7 @@
 package com.y9san9.b0mb3r.service
 
 
-val servicesInitializer = {
+val servicesInitializer: MutableList<Service>.() -> Unit = {
     /**
      *  Service example
      *  Checked 28.06.20. Only 70000000000 format available
