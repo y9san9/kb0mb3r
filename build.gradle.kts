@@ -1,6 +1,7 @@
 plugins {
-    java
+    application
     kotlin("jvm") version "1.3.72"
+    id("com.github.johnrengelman.shadow") version "5.0.0"
 }
 
 group = "com.y9san9.b0mb3r"
@@ -9,6 +10,16 @@ version = "1.0"
 repositories {
     mavenCentral()
     maven("https://jitpack.io")
+}
+
+application {
+    mainClassName = "com.y9san9.b0mb3r.MainKt.kt"
+}
+
+tasks.withType<Jar> {
+    manifest {
+        attributes(mapOf("Main-Class" to application.mainClassName))
+    }
 }
 
 dependencies {
