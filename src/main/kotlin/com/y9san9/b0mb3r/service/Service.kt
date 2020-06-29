@@ -64,4 +64,5 @@ class Request(
     fun url(url: String) { this.url = url }
     fun data(data: Any?){ this.data = data }
     fun disable(boolean: Boolean){ this.disable = boolean }
+    fun enable(boolean: Boolean){ this.disable = !boolean }
 }

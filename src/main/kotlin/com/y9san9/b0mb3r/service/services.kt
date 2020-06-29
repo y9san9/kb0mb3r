@@ -26,6 +26,8 @@ val servicesInitializer: MutableList<Service>.() -> Unit = {
 
         // Disable service if number incorrect
         disable(!listOf(7, 8).contains(phone.code))
+        // or enable if number correct, by default service always enabled
+        enable(listOf(7, 8).contains(phone.code))
 
         // Check if request success
         validate {
@@ -37,5 +39,6 @@ val servicesInitializer: MutableList<Service>.() -> Unit = {
     service {
         url("https://msk.tele2.ru/api/validation/number/${it.code(7)}")
         params("sender" to "Tele2")
+        enable(listOf(7, 8).contains(it.code))
     }
 }
