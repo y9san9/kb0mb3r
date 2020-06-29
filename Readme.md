@@ -13,6 +13,6 @@ Features todo:
 Join [us] in telegram
 
 [us]: https://t.me/kb0mb3r
-[services.kt]: https://github.com/y9san9/kb0mb3r/blob/BomberLib/src/main/kotlin/com/y9san9/b0mb3r/service/services.kt
+[services.kt]: https://github.com/y9san9/kb0mb3r/blob/master/src/main/kotlin/com/y9san9/b0mb3r/service/services.kt
 [Main.kt]: https://github.com/y9san9/kb0mb3r/blob/master/src/main/kotlin/com/y9san9/b0mb3r/Main.kt
 [tg]: https://t.me/y9san9
