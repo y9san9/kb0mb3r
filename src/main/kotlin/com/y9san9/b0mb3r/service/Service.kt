@@ -22,9 +22,9 @@ class Service(
         "User-Agent" to getRandomUserAgent(),
         "X-Requested-With" to "XMLHttpRequest"
     )
-    fun request(phone: String, fn: Request.(Response?) -> Unit){
+    fun request(phone: Phone, fn: Request.(Response?) -> Unit){
         Request(url, method, params, data).apply {
-            requestBuilder(Phone(phone))
+            requestBuilder(phone)
             if(disable){
                 fn(null)
             } else {

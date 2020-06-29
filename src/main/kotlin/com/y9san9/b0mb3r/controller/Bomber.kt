@@ -1,15 +1,22 @@
 package com.y9san9.b0mb3r.controller
 
+import com.y9san9.b0mb3r.phone.Phone
 import com.y9san9.b0mb3r.service.services
 import com.y9san9.b0mb3r.utils.Observable
 import java.lang.Integer.min
 
-class Bomber (private val phone: String, fn: Bomber.() -> Unit = {}) : Observable<StateUpdate> {
+class Bomber (phone: String, fn: Bomber.() -> Unit = {}) : Observable<StateUpdate> {
+    private val phone = Phone(phone)
+
     init {
         apply(fn)
     }
 
     fun start(count: Int, cycleMeta: CycleMeta = CycleMeta()) {
+        if(phone.text == null){
+            push(BomberFinished(0, StopReason.ErrorResolvingNumber))
+            return
+        }
         val requested = min(services.size, count)
         var resulted = 0
         var success = 0

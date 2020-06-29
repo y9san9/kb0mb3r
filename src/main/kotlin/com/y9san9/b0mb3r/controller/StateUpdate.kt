@@ -2,7 +2,7 @@ package com.y9san9.b0mb3r.controller
 
 
 enum class StopReason {
-    Success, LastLoopFailed
+    Success, LastLoopFailed, ErrorResolvingNumber
 }
 
 sealed class StateUpdate

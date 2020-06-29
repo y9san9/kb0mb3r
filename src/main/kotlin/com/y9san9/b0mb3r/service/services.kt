@@ -1,7 +1,4 @@
-package services
-
-import com.y9san9.b0mb3r.service.Service
-import com.y9san9.b0mb3r.service.service
+package com.y9san9.b0mb3r.service
 
 
 val servicesInitializer: MutableList<Service>.() -> Unit = {

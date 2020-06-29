@@ -1,6 +1,7 @@
 package com.y9san9.b0mb3r
 
 import com.y9san9.b0mb3r.controller.*
+import com.y9san9.b0mb3r.phone.numberLengthToCode
 import com.y9san9.b0mb3r.service.ServiceFactory
 import java.util.*
 
@@ -18,6 +19,12 @@ fun main(){
                         StopReason.LastLoopFailed ->
                             println("Last loop havent sent at least one sms, stopping bomber. " +
                                     "That's because some services banned or timeouted you by phone / ip")
+                        StopReason.ErrorResolvingNumber ->
+                            println("Your number is invalid or not supported at the moment,\n" +
+                                    "You can add it to com.y9san9.b0mb3r.phone.numberLengthToCode and send PR or " +
+                                    "write me in Telegram to me make it\n" +
+                                    "Available codes: " +
+                                    numberLengthToCode.values.joinToString { codes -> codes.joinToString() })
                     }
                     println("Total sent: ${it.totalSent}")
                 }
