@@ -10,6 +10,9 @@ Features todo:
 - make jar file to run by one click
 - make instruction to run on android or make android client
 
-[services.kt]: https://github.com/y9san9/kb0mb3r
-[Main.kt]: https://github.com/y9san9/kb0mb3r
+Join [us] in telegram
+
+[us]: https://t.me/kb0mb3r
+[services.kt]: https://github.com/y9san9/kb0mb3r/blob/master/src/main/kotlin/com/y9san9/b0mb3r/Main.kt
+[Main.kt]: https://github.com/y9san9/kb0mb3r/blob/master/src/main/kotlin/com/y9san9/b0mb3r/Main.kt
 [tg]: https://t.me/y9san9
