@@ -1,7 +1,5 @@
 package com.y9san9.b0mb3r.utils
 
-import java.lang.StringBuilder
-
 
 fun shuffleString(string: String = "ABCDEFGHIJKklmnopqrst4567890_") : String {
     return string.shuffle()
