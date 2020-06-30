@@ -59,11 +59,11 @@ val servicesInitializer: MutableList<Service>.() -> Unit = {
         ))
     }
 
-    service("https://kristalnaya.ru/ajax/ajax.php?action=send_one_pas_reg"){ phone ->
-        val masked = phone.mask("+# (###) ###-##-##")
+    service("https://kristalnaya.ru/ajax/ajax.php?action=send_one_pas_reg", Method.FORM){ phone ->
+        val masked = phone.code(7).mask("+# (###) ###-##-##")
         params("data" to """{"phone":"$masked"}""")
         disable(masked == null)
-        validate { it?.text?.contains("JSON error") == false }
+        validate { it?.text?.contains("не робот") == false }
     }
 
     service("https://ok.ru/dk?cmd=AnonymRegistrationEnterPhone&st.cmd=anonymRegistrationEnterPhone"){
@@ -71,7 +71,9 @@ val servicesInitializer: MutableList<Service>.() -> Unit = {
     }
 
     service("https://prod.tvh.mts.ru/tvh-public-api-gateway/public/rest/general/send-code"){
+        contentType("application/json")
         params("msisdn" to it.text)
+        validate { false }
     }
 
 }

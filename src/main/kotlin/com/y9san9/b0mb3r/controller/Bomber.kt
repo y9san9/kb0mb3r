@@ -12,6 +12,11 @@ class Bomber (phone: String, fn: Bomber.() -> Unit = {}) : Observable<StateUpdat
         apply(fn)
     }
 
+    /**
+     * @param count the minimal count of sms will sent
+     * (there are some services that we cannot check for success and method can send more messages than count)
+     * @param cycleMeta the internal param, exists because start is recursive, you should not touch it
+     */
     fun start(count: Int, cycleMeta: CycleMeta = CycleMeta()) {
         if(phone.text == null){
             push(BomberFinished(0, StopReason.ErrorResolvingNumber))

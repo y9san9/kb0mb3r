@@ -27,7 +27,9 @@ fun MutableList<Service>.service(
              "X-Requested-With" to "XMLHttpRequest"
         ),
         params: MutableMap<String, Any?> = mutableMapOf(),
+        formData: MutableMap<String, Pair<String, String>> = mutableMapOf(),
         body: Any? = null,
+        contentType: String? = null,
         fn: Request.(Phone) -> Unit = {}){
-     add(Service(url, method, headers, params, body, fn))
+     add(Service(Request(url, method, headers, params, formData, body, contentType), fn))
 }
