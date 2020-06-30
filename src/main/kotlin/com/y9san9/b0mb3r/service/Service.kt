@@ -1,12 +1,15 @@
 package com.y9san9.b0mb3r.service
 
 import com.github.kittinunf.fuel.core.DataPart
+import com.github.kittinunf.fuel.core.FuelManager
 import com.github.kittinunf.fuel.core.InlineDataPart
 import com.github.kittinunf.fuel.core.Response
 import com.y9san9.b0mb3r.phone.Phone
 import com.y9san9.b0mb3r.utils.jsonify
 import kotlin.concurrent.thread
 import com.github.kittinunf.fuel.core.Method.POST
+import com.github.kittinunf.fuel.core.extensions.authenticate
+import com.github.kittinunf.fuel.core.extensions.authentication
 
 
 enum class Method {
@@ -17,7 +20,7 @@ class Service(
         private val request: Request,
         private val requestBuilder: Request.(phone: Phone) -> Unit
 ) {
-    fun request(phone: Phone, fn: Request.(Response?) -> Unit){
+    fun request(manager: FuelManager, phone: Phone, fn: Request.(Response?) -> Unit){
         request.apply {
             requestBuilder(phone)
             if(disable){
@@ -65,7 +68,6 @@ class Request(
 
     /**
      * @note Response may be null if service disabled or error while loading
-     *
      **/
     fun validate(validator: ResponseValidator){
         this.validator = validator

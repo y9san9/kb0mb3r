@@ -8,13 +8,6 @@ import com.y9san9.b0mb3r.phone.Phone
 import com.y9san9.b0mb3r.utils.getRandomUserAgent
 
 
-val manager = FuelManager().apply {
-     @Suppress("ConstantConditionIf")
-     if(DEBUG) {
-          addRequestInterceptor(LogRequestAsCurlInterceptor)
-          addResponseInterceptor(LogResponseInterceptor)
-     }
-}
 val services by lazy {
      ServiceFactory.build()
 }

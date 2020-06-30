@@ -1,7 +1,7 @@
 package com.y9san9.b0mb3r.controller
 
 
-const val DEBUG = true
+const val DEBUG = false
 
 fun Bomber.handleLast(count: Int, successCount: Int, totalSuccess: Int, cycleNumber: Int){
     if(count == successCount) {

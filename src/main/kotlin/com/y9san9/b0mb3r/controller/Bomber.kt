@@ -1,12 +1,24 @@
 package com.y9san9.b0mb3r.controller
 
+import com.github.kittinunf.fuel.core.FuelManager
+import com.github.kittinunf.fuel.core.interceptors.LogRequestAsCurlInterceptor
+import com.github.kittinunf.fuel.core.interceptors.LogResponseInterceptor
 import com.y9san9.b0mb3r.phone.Phone
 import com.y9san9.b0mb3r.service.services
 import com.y9san9.b0mb3r.utils.Observable
 import java.lang.Integer.min
 
+
 class Bomber (phone: String, fn: Bomber.() -> Unit = {}) : Observable<StateUpdate> {
     private val phone = Phone(phone)
+
+    private val manager = FuelManager().apply {
+        @Suppress("ConstantConditionIf")
+        if(DEBUG) {
+            addRequestInterceptor(LogRequestAsCurlInterceptor)
+            addResponseInterceptor(LogResponseInterceptor)
+        }
+    }
 
     init {
         apply(fn)
@@ -28,7 +40,7 @@ class Bomber (phone: String, fn: Bomber.() -> Unit = {}) : Observable<StateUpdat
         services.shuffle()
         services.forEachIndexed { i, service ->
             if(i < count) {
-                service.request(phone) {
+                service.request(manager, phone) {
                     val isSuccess = validator(it)
                     push(SmsSent(isSuccess, url))
 

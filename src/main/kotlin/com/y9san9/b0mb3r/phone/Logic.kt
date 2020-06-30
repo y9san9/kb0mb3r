@@ -11,6 +11,8 @@ val numberLengthToCode = mapOf(
 
 fun String.parsePhone() : Pair<Int, Long>? {
     val phone = replace(Regex("\\D"))
+    println(phone.length)
+    println(phone)
     return numberLengthToCode[phone.length]?.firstOrNull { phone.startsWith(it.toString()) }?.let {
         it to phone.replaceFirst(it.toString()).toLong()
     }
