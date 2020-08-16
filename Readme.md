@@ -12,6 +12,17 @@ Features todo:
 
 Join [us] in telegram
 
+## Gradle implementation [![](https://jitpack.io/v/y9san9/kb0mb3r.svg)](https://jitpack.io/#y9san9/kb0mb3r)
+```gradle
+repositories {
+    ...
+    maven { url 'https://jitpack.io' }
+}
+dependencies {
+    implementation 'com.github.y9san9:kb0mb3r:-SNAPSHOT'
+}
+```
+
 [us]: https://t.me/kb0mb3r
 [services.kt]: https://github.com/y9san9/kb0mb3r/blob/master/src/main/kotlin/com/y9san9/b0mb3r/service/services.kt
 [Main.kt]: https://github.com/y9san9/kb0mb3r/blob/master/src/main/kotlin/com/y9san9/b0mb3r/Main.kt
